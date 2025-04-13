@@ -18,8 +18,10 @@ import Profile from './pages/profile/Profile';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/Dashboard';
+import AdminUsersDashboard from './pages/admin/AdminUsers';
 import Privacy from './pages/legal/Privacy';
 import Terms from './pages/legal/Terms';
+
 export function App() {
   const [cartOpen, setCartOpen] = useState(false);
   return <ThemeProvider>
@@ -30,6 +32,7 @@ export function App() {
             <Route path="/admin/*" element={<AdminLayout>
                   <Routes>
                     <Route path="dashboard" element={<AdminDashboard />} />
+                    <Route path="users" element={<AdminUsersDashboard />} />
                   </Routes>
                 </AdminLayout>} />
             <Route path="*" element={<>
