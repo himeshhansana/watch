@@ -56,7 +56,7 @@ const Contact = () => {
                   <p className="text-gray-400">
                     +94 (74) 025 9085
                     <br />
-                    Monday - Saturday: 10:00 AM - 7:00 PM
+                    Monday - Saturday: 08:00 AM - 7:00 PM
                   </p>
                 </div>
               </div>
