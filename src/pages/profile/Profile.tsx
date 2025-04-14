@@ -1,3 +1,5 @@
+import man3 from '../assets/man3.jpg';
+
 import React, { useState } from 'react';
 import { UserIcon, ClockIcon, HeartIcon, MapPinIcon, CreditCardIcon, BellIcon, LogOutIcon, ChevronRightIcon, SunIcon, MoonIcon, BarChart3Icon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
@@ -34,8 +36,8 @@ const Profile = () => {
     return 'bg-gray-500';
   };
   return <div className={`min-h-screen pt-24 transition-colors duration-300 ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-950'}`}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="container px-4 py-16 mx-auto">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <div className={`rounded-lg p-6 transition-colors duration-300 ${theme === 'light' ? 'bg-white shadow-sm' : 'bg-gray-900'}`}>
               <div className="flex justify-end mb-4">
@@ -43,9 +45,9 @@ const Profile = () => {
                   {theme === 'light' ? <MoonIcon size={20} /> : <SunIcon size={20} />}
                 </button>
               </div>
-              <div className="text-center mb-6">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden ring-4 ring-gold-500">
-                  <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+              <div className="mb-6 text-center">
+                <div className="w-24 h-24 mx-auto mb-4 overflow-hidden rounded-full ring-4 ring-gold-500">
+                  <img src={user.avatar} alt={user.name} className="object-cover w-full h-full" />
                 </div>
                 <h2 className="text-xl font-bold">{user.name}</h2>
                 <p className={`text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
@@ -62,7 +64,7 @@ const Profile = () => {
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </span>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium mr-2">
+                        <span className="mr-2 text-sm font-medium">
                           {value}
                         </span>
                         <div className={`w-2 h-2 rounded-full ${getActivityColor(value)}`} />
@@ -115,7 +117,7 @@ const Profile = () => {
           <div className="lg:col-span-3">
             <div className={`rounded-lg p-6 transition-colors duration-300 ${theme === 'light' ? 'bg-white shadow-sm' : 'bg-gray-900'}`}>
               {activeTab === 'overview' && <div className="space-y-8">
-                  <div className="flex justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-bold">Account Overview</h2>
                     <button className={`px-4 py-2 rounded-lg transition-colors duration-300 ${theme === 'light' ? 'bg-gray-100 hover:bg-gray-200 text-gray-800' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}>
                       Edit Profile
@@ -125,7 +127,7 @@ const Profile = () => {
                     <h3 className={`text-lg font-medium mb-4 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
                       Personal Information
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="space-y-2">
                         <label className={`block text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                           Full Name
@@ -144,9 +146,9 @@ const Profile = () => {
                     <h3 className={`text-lg font-medium mb-4 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
                       Preferences
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className={`p-4 rounded-lg ${theme === 'light' ? 'bg-gray-50' : 'bg-gray-800'}`}>
-                        <h4 className="font-medium mb-3">Notifications</h4>
+                        <h4 className="mb-3 font-medium">Notifications</h4>
                         {Object.entries(user.preferences.notifications).map(([key, value]) => <div key={key} className="flex items-center justify-between mb-2">
                               <span className="capitalize">{key}</span>
                               <button className={`w-12 h-6 rounded-full transition-colors duration-300 ${value ? 'bg-gold-500' : theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`}>
@@ -155,7 +157,7 @@ const Profile = () => {
                             </div>)}
                       </div>
                       <div className={`p-4 rounded-lg ${theme === 'light' ? 'bg-gray-50' : 'bg-gray-800'}`}>
-                        <h4 className="font-medium mb-3">Regional</h4>
+                        <h4 className="mb-3 font-medium">Regional</h4>
                         <div className="space-y-4">
                           <div>
                             <label className={`block text-sm mb-1 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>

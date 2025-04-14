@@ -1,3 +1,10 @@
+import watch1 from '../assets/watch1.jpg';
+import watch2 from '../assets/watch2.jpg';
+import aboutmain from '../assets/aboutmain.jpg';
+import man1 from '../assets/man1.jpg';
+import man2 from '../assets/man2.jpg';
+import man3 from '../assets/man3.jpg';
+
 import React from 'react';
 import { ArrowRightIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -29,98 +36,98 @@ const timeline = [{
 const team = [{
   name: 'Robert Maxwell',
   role: 'Master Watchmaker',
-  image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+  image: man1
 }, {
   name: 'Elena Rodriguez',
   role: 'Design Director',
-  image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+  image: man2
 }, {
   name: 'James Chen',
   role: 'Technical Director',
-  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+  image: man3
 }];
 const About = () => {
   return <div className="min-h-screen bg-gray-950">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" alt="Watchmaking craftsmanship" className="w-full h-full object-cover opacity-30" />
+    {/* Hero Section */}
+    <section className="relative h-[60vh] flex items-center">
+      <div className="absolute inset-0 overflow-hidden">
+        <img src={aboutmain} alt="Watchmaking craftsmanship" className="object-cover w-full h-full opacity-30" />
+      </div>
+      <div className="container relative px-4 mx-auto">
+        <h1 className="mb-6 text-4xl font-bold md:text-6xl">Our Story</h1>
+        <p className="max-w-2xl text-xl text-gray-300">
+          Since 1895, CHRONOS has been crafting exceptional timepieces that
+          combine traditional watchmaking with modern innovation.
+        </p>
+      </div>
+    </section>
+    {/* Heritage Section */}
+    <section className="py-20 bg-gray-900">
+      <div className="container px-4 mx-auto">
+        <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
+          <div>
+            <h2 className="mb-6 text-3xl font-bold">Our Heritage</h2>
+            <p className="mb-6 leading-relaxed text-gray-300">
+              For over a century, CHRONOS has been dedicated to the art of
+              fine watchmaking. Our timepieces are more than just instruments
+              for measuring time – they are expressions of excellence,
+              innovation, and timeless elegance.
+            </p>
+            <p className="mb-8 leading-relaxed text-gray-300">
+              Each watch is meticulously crafted by our master watchmakers,
+              combining traditional techniques with cutting-edge technology to
+              create pieces of exceptional quality and precision.
+            </p>
+            <Link to="/products" className="inline-flex items-center transition-colors duration-300 text-gold-500 hover:text-gold-400">
+              Discover our collections
+              <ArrowRightIcon size={20} className="ml-2" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <img src={watch1} alt="Heritage watch" className="rounded-lg" />
+            <img src={watch2} alt="Modern watch" className="mt-8 rounded-lg" />
+          </div>
         </div>
-        <div className="relative container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Story</h1>
-          <p className="text-xl text-gray-300 max-w-2xl">
-            Since 1895, CHRONOS has been crafting exceptional timepieces that
-            combine traditional watchmaking with modern innovation.
-          </p>
-        </div>
-      </section>
-      {/* Heritage Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Heritage</h2>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                For over a century, CHRONOS has been dedicated to the art of
-                fine watchmaking. Our timepieces are more than just instruments
-                for measuring time – they are expressions of excellence,
-                innovation, and timeless elegance.
-              </p>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Each watch is meticulously crafted by our master watchmakers,
-                combining traditional techniques with cutting-edge technology to
-                create pieces of exceptional quality and precision.
-              </p>
-              <Link to="/products" className="inline-flex items-center text-gold-500 hover:text-gold-400 transition-colors duration-300">
-                Discover our collections
-                <ArrowRightIcon size={20} className="ml-2" />
-              </Link>
+      </div>
+    </section>
+    {/* Timeline Section */}
+    <section className="py-20">
+      <div className="container px-4 mx-auto">
+        <h2 className="mb-12 text-3xl font-bold text-center">Our Journey</h2>
+        <div className="space-y-12">
+          {timeline.map((item, index) => <div key={index} className="flex flex-col items-start md:flex-row">
+            <div className="md:w-1/4">
+              <span className="text-2xl font-bold text-gold-500">
+                {item.year}
+              </span>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Heritage watch" className="rounded-lg" />
-              <img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Modern watch" className="rounded-lg mt-8" />
+            <div className="mt-4 md:w-3/4 md:mt-0">
+              <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+              <p className="text-gray-400">{item.description}</p>
             </div>
-          </div>
+          </div>)}
         </div>
-      </section>
-      {/* Timeline Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Journey</h2>
-          <div className="space-y-12">
-            {timeline.map((item, index) => <div key={index} className="flex flex-col md:flex-row items-start">
-                <div className="md:w-1/4">
-                  <span className="text-gold-500 text-2xl font-bold">
-                    {item.year}
-                  </span>
-                </div>
-                <div className="md:w-3/4 mt-4 md:mt-0">
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-400">{item.description}</p>
-                </div>
-              </div>)}
-          </div>
+      </div>
+    </section>
+    {/* Team Section */}
+    <section className="py-20 bg-gray-900">
+      <div className="container px-4 mx-auto">
+        <h2 className="mb-12 text-3xl font-bold text-center">
+          Meet Our Team
+        </h2>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {team.map((member, index) => <div key={index} className="text-center">
+            <div className="relative mb-6 group">
+              <div className="overflow-hidden rounded-full aspect-square">
+                <img src={member.image} alt={member.name} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />
+              </div>
+            </div>
+            <h3 className="mb-2 text-xl font-bold">{member.name}</h3>
+            <p className="text-gold-500">{member.role}</p>
+          </div>)}
         </div>
-      </section>
-      {/* Team Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            Meet Our Team
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => <div key={index} className="text-center">
-                <div className="mb-6 relative group">
-                  <div className="aspect-square rounded-full overflow-hidden">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                <p className="text-gold-500">{member.role}</p>
-              </div>)}
-          </div>
-        </div>
-      </section>
-    </div>;
+      </div>
+    </section>
+  </div>;
 };
 export default About;

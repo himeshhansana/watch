@@ -1,3 +1,8 @@
+
+import watch1 from '../assets/watch1.jpg';
+import watch2 from '../assets/watch2.jpg';
+import watch3 from '../assets/watch3.jpg';
+
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingBagIcon, HeartIcon, ShareIcon, ChevronRightIcon, MinusIcon, PlusIcon, CheckIcon } from 'lucide-react';
@@ -16,7 +21,7 @@ const product = {
     dialColor: 'Black',
     strapMaterial: 'Genuine Leather'
   },
-  images: ['https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1623998021451-306e52e35562?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'],
+  images: [watch1, watch2, watch3],
   category: 'Classic',
   availability: true
 };
@@ -24,12 +29,12 @@ const relatedProducts = [{
   id: '2',
   name: 'Aqua Diver Pro',
   price: 3499,
-  image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+  image: watch2
 }, {
   id: '3',
   name: 'Royal Gold Limited',
   price: 12999,
-  image: 'https://images.unsplash.com/photo-1623998021451-306e52e35562?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+  image: watch3
 }];
 const ProductDetail = () => {
   const {
@@ -38,9 +43,9 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
-  return <div className="pt-24 pb-12 min-h-screen bg-gray-950">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center space-x-2 text-sm text-gray-400 mb-8">
+  return <div className="min-h-screen pt-24 pb-12 bg-gray-950">
+      <div className="container px-4 mx-auto">
+        <div className="flex items-center mb-8 space-x-2 text-sm text-gray-400">
           <Link to="/" className="hover:text-gold-500">
             Home
           </Link>
@@ -51,30 +56,30 @@ const ProductDetail = () => {
           <ChevronRightIcon size={16} />
           <span className="text-gold-500">{product.name}</span>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 gap-12 mb-16 lg:grid-cols-2">
           <div className="space-y-4">
-            <div className="aspect-square bg-gray-900 rounded-lg overflow-hidden">
-              <img src={product.images[selectedImage]} alt={product.name} className="w-full h-full object-cover" />
+            <div className="overflow-hidden bg-gray-900 rounded-lg aspect-square">
+              <img src={product.images[selectedImage]} alt={product.name} className="object-cover w-full h-full" />
             </div>
             <div className="grid grid-cols-3 gap-4">
               {product.images.map((image, index) => <button key={index} onClick={() => setSelectedImage(index)} className={`aspect-square bg-gray-900 rounded-lg overflow-hidden ${selectedImage === index ? 'ring-2 ring-gold-500' : ''}`}>
-                  <img src={image} alt={`${product.name} view ${index + 1}`} className="w-full h-full object-cover" />
+                  <img src={image} alt={`${product.name} view ${index + 1}`} className="object-cover w-full h-full" />
                 </button>)}
             </div>
           </div>
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="mb-4 text-3xl font-bold md:text-4xl">
               {product.name}
             </h1>
-            <p className="text-3xl font-bold mb-6">
+            <p className="mb-6 text-3xl font-bold">
               ${product.price.toLocaleString()}
             </p>
-            <p className="text-gray-400 mb-8">{product.description}</p>
+            <p className="mb-8 text-gray-400">{product.description}</p>
             <div className="mb-8">
-              <h3 className="text-lg font-medium mb-4">Key Features</h3>
+              <h3 className="mb-4 text-lg font-medium">Key Features</h3>
               <ul className="space-y-2">
                 {product.features.map((feature, index) => <li key={index} className="flex items-center text-gray-300">
-                    <CheckIcon size={16} className="text-gold-500 mr-2" />
+                    <CheckIcon size={16} className="mr-2 text-gold-500" />
                     {feature}
                   </li>)}
               </ul>
@@ -82,25 +87,25 @@ const ProductDetail = () => {
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <div className="flex items-center border border-gray-700 rounded-lg">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-2 hover:text-gold-500 transition-colors duration-300">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-2 transition-colors duration-300 hover:text-gold-500">
                     <MinusIcon size={20} />
                   </button>
                   <span className="w-12 text-center">{quantity}</span>
-                  <button onClick={() => setQuantity(quantity + 1)} className="p-2 hover:text-gold-500 transition-colors duration-300">
+                  <button onClick={() => setQuantity(quantity + 1)} className="p-2 transition-colors duration-300 hover:text-gold-500">
                     <PlusIcon size={20} />
                   </button>
                 </div>
-                <button className="flex-grow py-3 px-6 bg-gold-500 text-gray-900 rounded-lg hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center font-medium">
+                <button className="flex items-center justify-center flex-grow px-6 py-3 font-medium text-gray-900 transition-colors duration-300 rounded-lg bg-gold-500 hover:bg-gold-600">
                   <ShoppingBagIcon size={20} className="mr-2" />
                   Add to Cart
                 </button>
               </div>
               <div className="flex space-x-4">
-                <button className="flex-1 py-3 border border-gray-700 rounded-lg hover:border-gold-500 transition-colors duration-300 flex items-center justify-center">
+                <button className="flex items-center justify-center flex-1 py-3 transition-colors duration-300 border border-gray-700 rounded-lg hover:border-gold-500">
                   <HeartIcon size={20} className="mr-2" />
                   Add to Wishlist
                 </button>
-                <button className="flex-1 py-3 border border-gray-700 rounded-lg hover:border-gold-500 transition-colors duration-300 flex items-center justify-center">
+                <button className="flex items-center justify-center flex-1 py-3 transition-colors duration-300 border border-gray-700 rounded-lg hover:border-gold-500">
                   <ShareIcon size={20} className="mr-2" />
                   Share
                 </button>
@@ -109,7 +114,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="mb-16">
-          <div className="flex border-b border-gray-800 mb-8">
+          <div className="flex mb-8 border-b border-gray-800">
             <button onClick={() => setActiveTab('description')} className={`py-4 px-8 font-medium ${activeTab === 'description' ? 'border-b-2 border-gold-500 text-gold-500' : 'text-gray-400 hover:text-white'}`}>
               Description
             </button>
@@ -117,13 +122,13 @@ const ProductDetail = () => {
               Specifications
             </button>
           </div>
-          <div className="bg-gray-900 rounded-lg p-8">
+          <div className="p-8 bg-gray-900 rounded-lg">
             {activeTab === 'description' ? <div className="prose prose-invert max-w-none">
-                <p className="text-gray-300 leading-relaxed">
+                <p className="leading-relaxed text-gray-300">
                   {product.description}
                 </p>
-              </div> : <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {Object.entries(product.specifications).map(([key, value]) => <div key={key} className="flex justify-between border-b border-gray-800 pb-4">
+              </div> : <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                {Object.entries(product.specifications).map(([key, value]) => <div key={key} className="flex justify-between pb-4 border-b border-gray-800">
                     <span className="text-gray-400 capitalize">
                       {key.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
@@ -133,14 +138,14 @@ const ProductDetail = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-bold mb-8">Related Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="mb-8 text-2xl font-bold">Related Products</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {relatedProducts.map(product => <Link key={product.id} to={`/product/${product.id}`} className="group bg-gray-900 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
-                <div className="aspect-square overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="overflow-hidden aspect-square">
+                  <img src={product.image} alt={product.name} className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-medium mb-2 group-hover:text-gold-500 transition-colors duration-300">
+                  <h3 className="mb-2 text-lg font-medium transition-colors duration-300 group-hover:text-gold-500">
                     {product.name}
                   </h3>
                   <p className="text-xl font-bold">
